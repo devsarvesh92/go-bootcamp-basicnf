@@ -9,3 +9,13 @@ func GetEvenNumbers(numbers []int) []int {
 	}
 	return evenNumbers
 }
+
+func GetOddNumbers(numbers []int) []int {
+	oddNumbers := make([]int, 0, len(numbers))
+	for _, val := range numbers {
+		if val%2 != 0 {
+			oddNumbers = append(oddNumbers, val)
+		}
+	}
+	return oddNumbers
+}
