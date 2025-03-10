@@ -1,6 +1,8 @@
 package basicnf
 
-import "math"
+import (
+	"math"
+)
 
 func GetEvenNumbers(numbers []int) []int {
 	evenNumbers := make([]int, 0, len(numbers))
@@ -69,6 +71,19 @@ func All(numbers []int, condtions ...FilterCondition) []int {
 		}
 		if conditionMatch {
 			results = append(results, num)
+		}
+	}
+	return results
+}
+
+func Any(numbers []int, conditions ...FilterCondition) []int {
+	results := make([]int, 0, len(numbers))
+	for _, num := range numbers {
+		for _, condition := range conditions {
+			if condition(num) {
+				results = append(results, num)
+				break
+			}
 		}
 	}
 	return results

@@ -106,3 +106,24 @@ func TestOddMultiplesOf3Gt10(t *testing.T) {
 		}
 	}
 }
+
+func TestAnyConditionMatched(t *testing.T) {
+	Gt15 := func(num int) bool {
+		return num > 15
+	}
+	MultipleOf5 := func(num int) bool {
+		return num%5 == 0
+	}
+
+	tests := []struct {
+		input    []int
+		expected []int
+	}{{input: []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}, expected: []int{2, 3, 5, 7, 10, 11, 13, 15, 16, 17, 18, 19, 20}}}
+
+	for _, val := range tests {
+		got := basicnf.Any(val.input, MultipleOf5, Gt15, basicnf.IsPrime)
+		if !reflect.DeepEqual(got, val.expected) {
+			t.Errorf("Got %v, Expected %v", got, val.expected)
+		}
+	}
+}
