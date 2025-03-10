@@ -53,3 +53,17 @@ func TestGetPrimeNumbers(t *testing.T) {
 		}
 	}
 }
+
+func TestGetOddPrimeNumbers(t *testing.T) {
+	tests := []struct {
+		input    []int
+		expected []int
+	}{{input: []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, expected: []int{3, 5, 7}}}
+
+	for _, val := range tests {
+		got := basicnf.All(val.input, basicnf.IsPrime, basicnf.IsOdd)
+		if !reflect.DeepEqual(got, val.expected) {
+			t.Errorf("Got %v, Expected %v", got, val.expected)
+		}
+	}
+}
