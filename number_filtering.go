@@ -5,7 +5,7 @@ import "math"
 func GetEvenNumbers(numbers []int) []int {
 	evenNumbers := make([]int, 0, len(numbers))
 	for _, num := range numbers {
-		if num%2 == 0 {
+		if IsEven(num) {
 			evenNumbers = append(evenNumbers, num)
 		}
 	}
@@ -50,6 +50,10 @@ func IsPrime(num int) bool {
 
 func IsOdd(num int) bool {
 	return num%2 != 0
+}
+
+func IsEven(num int) bool {
+	return num%2 == 0
 }
 
 type FilterCondition func(n int) bool
